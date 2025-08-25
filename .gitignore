@@ -1,0 +1,28 @@
+# Build artifacts
+target/
+build/
+bin/
+data/
+
+# IDE-specific files
+.classpath
+.project
+.settings/
+.idea/
+.vscode/
+.gradle/
+
+# Log files
+*.log
+logs/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Sensitive configuration (use with caution, consider alternative handling)
+application-dev.properties
+application-prod.properties
+
+# Dependency directories
+node_modules/
