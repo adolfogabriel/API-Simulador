@@ -4,8 +4,8 @@
 
 **Versão:** 1.0
 
-## Servidores
-- http://localhost:8080 (Generated server url)
+## Acesso
+- http://localhost:8080 (**O swagger inicia automaticamente**)
 
 ## Configurações da Aplicação
 
