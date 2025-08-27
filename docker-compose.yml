@@ -1,10 +1,33 @@
-version: '3.9'
+version: "3.9"
 
 services:
-  app:
+  api-simulador:
     build: .
-    container_name: api-simulador
     ports:
       - "8080:8080"
     environment:
-      SPRING_PROFILES_ACTIVE: docker
+      # SQL Server
+      SPRING_DATASOURCE_SQLSERVER_JDBC_URL: jdbc:sqlserver://dbhackathon.database.windows.net:1433;database=hack
+      SPRING_DATASOURCE_SQLSERVER_USERNAME: hack
+      SPRING_DATASOURCE_SQLSERVER_PASSWORD: Password23
+      SPRING_DATASOURCE_SQLSERVER_DRIVER_CLASS_NAME: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+      # H2
+      SPRING_DATASOURCE_H2_JDBC_URL: jdbc:h2:mem:simulador;DB_CLOSE_DELAY=-1;
+      SPRING_DATASOURCE_H2_USERNAME: sa
+      SPRING_DATASOURCE_H2_PASSWORD:
+      SPRING_DATASOURCE_H2_DRIVER_CLASS_NAME: org.h2.Driver
+
+      # Cache
+      SPRING_DATASOURCE_CACHE_TYPE: caffeine
+      SPRING_DATASOURCE_CACHE_CACHE_NAMES: obterProdutos
+      SPRING_DATASOURCE_CACHE_CAFFEINE_SPEC: maximumSize=100,expireAfterWrite=1m
+
+      # Kafka
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: eventhack.servicebus.windows.net:9093
+      SPRING_KAFKA_PROPERTIES_SASL_MECHANISM: PLAIN
+      SPRING_KAFKA_PROPERTIES_SECURITY_PROTOCOL: SASL_SSL
+      SPRING_KAFKA_PRODUCER_VALUE_SERIALIZER: org.springframework.kafka.support.serializer.JsonSerializer
+
+      # Spring profile (opcional)
+      SPRING_PROFILES_ACTIVE: "docker"
