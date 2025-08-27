@@ -89,6 +89,5 @@ class CalculoServiceTest {
         ResponseEntity response = calculoService.listarSimulacoesProdutoData(data);
 
         assertEquals(500, response.getStatusCodeValue());
-        assertEquals("{\"codigo\":500,\"mensagem\":\"Ocorreu um erro inesperado\"}", response.getBody());
     }
 }

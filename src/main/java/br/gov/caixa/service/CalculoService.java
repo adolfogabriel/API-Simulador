@@ -42,6 +42,15 @@ public class CalculoService {
 
     public ResponseEntity iniciarSimulacao(EntradaSimulacaoDto simulacaoDto) {
         try {
+
+            if (simulacaoDto.getValorDesejado() == null && simulacaoDto.getValorDesejado() == null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body(RetornoDto.builder()
+                                .mensagem("Parâmetros não informados")
+                                .detalhes(null)
+                                .build());
+            }
+
             SimulacaoDto simulacao = calcularPriceESac(simulacaoDto);
             if (simulacao != null) {
                 salvarSimulacao(simulacao, simulacaoDto);
