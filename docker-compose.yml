@@ -4,7 +4,7 @@ services:
   api-simulador:
     build: .
     ports:
-      - "8080:8080"
+      - 8080:8080
     environment:
       # SQL Server
       SPRING_DATASOURCE_SQLSERVER_JDBC_URL: jdbc:sqlserver://dbhackathon.database.windows.net:1433;database=hack
@@ -30,4 +30,4 @@ services:
       SPRING_KAFKA_PRODUCER_VALUE_SERIALIZER: org.springframework.kafka.support.serializer.JsonSerializer
 
       # Spring profile (opcional)
-      SPRING_PROFILES_ACTIVE: "docker"
+      SPRING_PROFILES_ACTIVE: docker
